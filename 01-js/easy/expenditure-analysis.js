@@ -9,7 +9,30 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  newArr = []
+  for(var nTrans=0; nTrans < transactions.length; nTrans++){
+    var itemPriceAdded = false;
+    var item = transactions[nTrans];
+    if( item.price != 0){
+      for(var nCat = 0; nCat < newArr.length ; nCat++){
+        if(newArr[nCat].category === item.category){
+          var updatedPrice = newArr[nCat].totalSpent + item.price;
+          var cat = item.category;
+          var updatedObj = { category : cat, totalSpent : updatedPrice}
+          newArr[nCat] = updatedObj;
+          itemPriceAdded = true;
+          continue;
+        }
+      }
+      if (itemPriceAdded) {
+        continue;
+      }
+      var cat = item.category;
+      var updatedObj = { category : cat , totalSpent : item.price}
+      newArr.push(updatedObj);
+    }
+  }
+  return newArr;
 }
 
 module.exports = calculateTotalSpentByCategory;

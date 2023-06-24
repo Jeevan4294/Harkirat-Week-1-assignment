@@ -18,7 +18,7 @@ function isAnagram(str1, str2) {
     return false;
   }
 
-  if(str1.split("").sort().join("").toLowerCase() == str2.split("").sort().join("").toLowerCase()){
+  if(str1.toLowerCase().split("").sort().join("") == str2.toLowerCase().split("").sort().join("")){
     return true;
   }
   return false;
