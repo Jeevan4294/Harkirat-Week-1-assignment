@@ -8,7 +8,20 @@
 */
 
 function isAnagram(str1, str2) {
+  if(str1 === undefined && str2 === undefined) {
+    return "pass strings to check"
+  }
+  if (str1 === undefined && str2 != undefined){
+    return false;
+  }
+  if (str1 != undefined && str2 === undefined){
+    return false;
+  }
 
+  if(str1.split("").sort().join("").toLowerCase() == str2.split("").sort().join("").toLowerCase()){
+    return true;
+  }
+  return false;
 }
 
 module.exports = isAnagram;
